@@ -18,11 +18,14 @@
     "importHelpers": true,
     "target": "es2020",
     "module": "es2020",
-    "lib": [
-      "es2020",
-      "dom"
-    ]
+    "lib": ["es2020", "dom"]
   },
+  "exclude": [
+    "node_modules/@types/node/stream/web.d.ts",
+    "node_modules/@types/node" // También podrías intentar excluir toda la carpeta @types/node si los problemas persisten
+    // ... otros archivos o carpetas que ya estés excluyendo
+  ],
+  "include": ["src/**/*"],
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,

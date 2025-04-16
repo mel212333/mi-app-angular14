@@ -1,0 +1,27 @@
+<div style="padding: 50px">
+  <h1 class="text-center">Posts</h1>
+  <table class="table table-hover">
+    <thead class="table-danger">
+      <tr>
+        <th scope="col">USER_ID</th>
+        <th scope="col">ID</th>
+        <th scope="col">TITLE</th>
+        <th scope="col">COMPLETED</th>
+        <th scope="col">DETALLE</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of postsList; let i = index; trackBy: trackPost">
+        <th class="row">{{ item.userId }}</th>
+        <td>{{ item.id }}</td>
+        <td>{{ item.title }}</td>
+        <td>{{ item.completed }}</td>
+        <td>
+          <button (click)="verDetalle(item.id)" class="btn btn-success">
+            Ver Detalle
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,19 @@
+<div class="card">
+  <div class="card-header bg-dark text-white"><h1>Details Posts</h1></div>
+  <div class="card-body">
+    <div *ngIf="postDetails; else loading">
+      <div>
+        <p><strong>User ID:</strong> {{ postDetails.userId }}</p>
+        <p><strong>ID:</strong> {{ postDetails.id }}</p>
+        <p><strong>Título:</strong> {{ postDetails.title }}</p>
+        <p><strong>Completado:</strong> {{ postDetails.completed }}</p>
+        <button routerLink="/posts" class="btn btn-primary">
+          Volver a la lista
+        </button>
+      </div>
+    </div>
+    <ng-template #loading>
+      <p>Cargando detalles del post...</p>
+    </ng-template>
+  </div>
+</div>

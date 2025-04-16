@@ -2,26 +2,60 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.x.
 
-## Development server
+# Para levantar el proyecto:
+npm start
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Inicio del Proyecto: nos encontramos con la lista de Post provenientes de la Api dada, contiene las columnas userId,id,title,completed y el boton para ver el detalle de cada fila:  ![alt text](image-1.png)
 
-## Code scaffolding
+Luego en la URL http://localhost:4200/posts/{id}, podemos ver el detalle de cada contenido seleccionado.
+![alt text](image-2.png)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+# Para este Proyecto se uso: 
 
-## Build
+# Framework/Librería Principal:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Angular (versión 14).
+# Lenguajes:
+TypeScript.
+HTML.
+CSS.
+Bootstrap.
 
-## Running unit tests
+# Manejo de Datos y Lógica Asíncrona:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+RxJS.
+Observables.
+subscribe().
+map().
+BehaviorSubject.
 
-## Running end-to-end tests
+# Comunicación con el Backend:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+HttpClient.
+HttpClientModule.
+GET.
+URLs de la API: https://jsonplaceholder.typicode.com/todos/ para la lista de posts y https://jsonplaceholder.typicode.com/todos/{id} .
+environment.ts y environment.prod.ts.
 
-## Further help
+# Routing y Navegación:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+@angular/router.
+Router.
+RouterLink.
+Routes.
+
+# Componentes y Estructura:
+
+Componentes.
+@Component() decorator.
+templateUrl y styleUrls.
+selector: .
+
+# Directivas:
+*ngFor.
+*ngIf.
+
+# Servicios:
+Servicios (@Injectable()).
+Inyección de dependencias.
+
