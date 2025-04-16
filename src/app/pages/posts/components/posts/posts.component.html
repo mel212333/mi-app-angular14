@@ -11,7 +11,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of postsList; let i = index; trackBy: trackPost">
+      <tr *ngFor="let item of postsList; let i = index">
         <th class="row">{{ item.userId }}</th>
         <td>{{ item.id }}</td>
         <td>{{ item.title }}</td>

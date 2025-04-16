@@ -13,38 +13,35 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./posts.component.css'],
 })
 export class PostsComponent implements OnInit {
-  postsList: PostsInterfaces[] = [];
 
-  constructor(
+  postsList: PostsInterfaces[] = []; //declaro una lista vacia para que llene con los datos de la api
+
+  constructor( //inyecto el servicio que hace las llamadas a la api y el touter para poder navegar entre rutas
     private postsServices: PostsserviesComponent,
     private router: Router
   ) {}
-  dataPadre = 'Mensaje de Post';
+
   ngOnInit(): void {
     this.getPosts();
   }
 
   getPosts() {
-    this.postsServices.getPosts().subscribe({
+    this.postsServices.getPosts().subscribe({ //llamo al servicio con getPost, el cual hace una peticion a ñla api
       next: (result) => {
         console.log('-', result);
 
-        this.postsList = result.posts;
+        this.postsList = result.posts;//si tiene exito la guarda en la lista postList
         console.log('-', this.postsList);
       },
       error: (err) => {
-        console.log(err);
+        console.log(err);//si hay error lo muestra por sonsola
       },
     });
   }
 
   verDetalle(postId: number) {
-    this.postsServices.setSelectedPostId(postId); // Envía el ID a través del servicio
+    this.postsServices.setSelectedPostId(postId); // guarda el postsId seleccionado para tenerlo disponible para usarlo
     this.router.navigate(['/posts', postId]); // Navega a la página de detalles usando el ID en la URL
   }
 
-  trackPost(index: number, post: PostsInterfaces): number | undefined {
-    // Asumiendo que tu interfaz PostsInterfaces tiene una propiedad 'id' que es única
-    return post.id;
-  }
 }
