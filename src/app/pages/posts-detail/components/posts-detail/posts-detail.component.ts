@@ -1,7 +1,5 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { PostsInterfaces } from 'src/app/pages/interfaces/posts.interfaces';
-import { PostDetailService } from '../../services/post-detail.service';
 import { PostsserviesComponent } from 'src/app/pages/posts/services/post.service';
 import { Subscription } from 'rxjs';
 
@@ -10,41 +8,35 @@ import { Subscription } from 'rxjs';
   templateUrl: './posts-detail.component.html',
   styleUrls: ['./posts-detail.component.css'],
 })
-export class PostsDetailComponent implements OnInit, OnDestroy {
+export class PostsDetailComponent implements OnInit {
+  //El objetivo d eeste componente es detallar la informacion de un posts usando el Id que obtengo de un servicio
+  //uso Oninit para iniciarlizar el componente 
   postId: number | null = null;
-  postDetails: PostsInterfaces | null = null;
-  private postIdSubscription: Subscription | undefined;
+  postDetails: PostsInterfaces | null = null; //defina la forma o modelo de uin posts
 
   constructor(
-    private route: ActivatedRoute,
-    private postDetailService: PostDetailService, // Inyecta PostDetailService
-    private postsServices: PostsserviesComponent
+    private postsServices: PostsserviesComponent //servicio para obtener datos
   ) {}
 
   ngOnInit(): void {
-    // Leer el ID del servicio (si no lo pasaste por la URL)
-    this.postId = this.postsServices.getSelectedPostId();
-    if (this.postId) {
+    this.postId = this.postsServices.getSelectedPostId(); //contulta al servicio, tomo el is y lo guardo en postId, esto ocurre cuando precionamos el boton Detelle
+    if (this.postId) {//si lo tiene , llamo al metodo getPostDetail para los demas datos del posts
       this.getPostDetails(this.postId);
     } else {
-      // Manejar el caso donde no hay ID (ej: navegación directa sin seleccionar un post)
+      // si no lo tiene muestra un msj de advertecia
       console.warn('No se recibió el ID del post.');
     }
   }
 
   getPostDetails(id: number) {
     this.postsServices.getPostDetail(id).subscribe({
+      //Llama al backend para buscar el detalle del post con ese id, si  tiene exito los guarda en postDetails
       next: (post) => {
         this.postDetails = post;
       },
-      error: (err) => {
+      error: (err) => {//si no, muestra un msjs de error
         console.error('Error al obtener detalles del post:', err);
       },
     });
-  }
-  ngOnDestroy(): void {
-    if (this.postIdSubscription) {
-      this.postIdSubscription.unsubscribe();
-    }
   }
 }
