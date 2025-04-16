@@ -5,10 +5,10 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 # Para levantar el proyecto:
 npm start
 
-Inicio del Proyecto: nos encontramos con la lista de Post provenientes de la Api dada, contiene las columnas userId,id,title,completed y el boton para ver el detalle de cada fila:  ![alt text](image-1.png)
+Inicio del Proyecto: nos encontramos con la lista de Post provenientes de la Api dada, contiene las columnas userId,id,title y el boton para ver el detalle de cada fila:  !![alt text](image-3.png)
 
 Luego en la URL http://localhost:4200/posts/{id}, podemos ver el detalle de cada contenido seleccionado.
-![alt text](image-2.png)
+![alt text](image-4.png)
 
 # Para este Proyecto se uso: 
 
@@ -34,7 +34,7 @@ BehaviorSubject.
 HttpClient.
 HttpClientModule.
 GET.
-URLs de la API: https://jsonplaceholder.typicode.com/todos/ para la lista de posts y https://jsonplaceholder.typicode.com/todos/{id} .
+URLs de la API: https://jsonplaceholder.typicode.com/posts/ para la lista de posts y https://jsonplaceholder.typicode.com/posts/{id} .
 environment.ts y environment.prod.ts.
 
 # Routing y Navegación:
