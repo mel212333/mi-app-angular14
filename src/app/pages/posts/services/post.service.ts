@@ -12,7 +12,7 @@ import { environment } from 'src/environments/environment';
 export class PostsserviesComponent {
   // API_URL: string = 'https://jsonplaceholder.typicode.com/todos/';
   private API_URL: string = environment.API_URL;
-  
+
   constructor(private httpClient: HttpClient) {}
 
   private selectedPostIdSource = new BehaviorSubject<number | null>(null);
@@ -23,16 +23,18 @@ export class PostsserviesComponent {
   }
 
   getSelectedPostId() {
-    return this.selectedPostIdSource.getValue();
+    return this.selectedPostIdSource.getValue(); 
+    //Este método devuelve el valor actual almacenado en el BehaviorSubject selectedPostIdSource utilizando getValue(),
+    //Esto permite obtener el ID del post seleccionado
   }
 
-  getPosts(): Observable<any> {
-    return this.httpClient.get<any>(this.API_URL).pipe(
-        map((response) => ({ posts: response }))
-    );
+  getPosts(): Observable<any> { //hace la peticion a la api para obtener una lista de posts
+    return this.httpClient
+      .get<any>(this.API_URL)
+      .pipe(map((response) => ({ posts: response })));
   }
 
-  getPostDetail(id: number): Observable<PostsInterfaces> {
+  getPostDetail(id: number): Observable<PostsInterfaces> { //hace la peticion a la api especificando q quiere un posts por id(individualmente)
     const url = `${this.API_URL}/${id}`;
     return this.httpClient.get<PostsInterfaces>(url);
   }
