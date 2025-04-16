@@ -6,7 +6,7 @@
         <th scope="col">USER_ID</th>
         <th scope="col">ID</th>
         <th scope="col">TITLE</th>
-        <th scope="col">COMPLETED</th>
+        <!-- <th scope="col">COMPLETED</th> -->
         <th scope="col">DETALLE</th>
       </tr>
     </thead>
@@ -15,7 +15,7 @@
         <th class="row">{{ item.userId }}</th>
         <td>{{ item.id }}</td>
         <td>{{ item.title }}</td>
-        <td>{{ item.completed }}</td>
+        <!-- <td>{{ item.body }}</td>  -->
         <td>
           <button (click)="verDetalle(item.id)" class="btn btn-success">
             Ver Detalle

@@ -28,10 +28,9 @@ export class PostsComponent implements OnInit {
   getPosts() {
     this.postsServices.getPosts().subscribe({ //llamo al servicio con getPost, el cual hace una peticion a ñla api
       next: (result) => {
-        console.log('-', result);
+        console.log('posts recibidos', JSON.stringify(result));
 
         this.postsList = result.posts;//si tiene exito la guarda en la lista postList
-        console.log('-', this.postsList);
       },
       error: (err) => {
         console.log(err);//si hay error lo muestra por sonsola
