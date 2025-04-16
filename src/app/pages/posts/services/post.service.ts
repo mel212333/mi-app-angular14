@@ -28,10 +28,7 @@ export class PostsserviesComponent {
 
   getPosts(): Observable<any> {
     return this.httpClient.get<any>(this.API_URL).pipe(
-      // Si la API devolviera un objeto con una propiedad "posts", podrías usar map así:
-      // map(response => ({ posts: response }))
-      // Pero como jsonplaceholder devuelve un array, simplemente lo devolvemos.
-      map((response) => ({ posts: response }))
+        map((response) => ({ posts: response }))
     );
   }
 

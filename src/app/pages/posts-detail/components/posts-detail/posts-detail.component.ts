@@ -1,7 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PostsInterfaces } from 'src/app/pages/interfaces/posts.interfaces';
 import { PostsserviesComponent } from 'src/app/pages/posts/services/post.service';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-posts-detail',

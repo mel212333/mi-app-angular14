@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { PostsInterfaces } from '../../interfaces/posts.interfaces';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
@@ -15,16 +14,13 @@ export class PostDetailService {
   constructor(private httpClient: HttpClient) {}
 
   getPosts(): Observable<any> {
-    return this.httpClient.get<any>(this.API_URL).pipe(
-      // Si la API devolviera un objeto con una propiedad "posts", podrías usar map así:
-      // map(response => ({ posts: response }))
-      // Pero como jsonplaceholder devuelve un array, simplemente lo devolvemos.
+    return this.httpClient.get<any>(this.API_URL).pipe(      //hago un get a la api, devuelve un objeto con la propiedad posts
       map((response) => ({ posts: response }))
     );
   }
 
   getPostDetail(id: number): Observable<PostsInterfaces> {
-    const url = `<span class="math-inline">\{this\.API\_URL\}/</span>{id}`;
-    return this.httpClient.get<PostsInterfaces>(url);
+    const url = `<span class="math-inline">\{this\.API\_URL\}/</span>{id}`; //construyo la url para que llegue con el id seleccionado desde el boton detalle
+    return this.httpClient.get<PostsInterfaces>(url);//hago un get para obtener un unico posts
   }
 }
