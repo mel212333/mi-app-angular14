@@ -13,14 +13,8 @@ export class PostDetailService {
 
   constructor(private httpClient: HttpClient) {}
 
-  getPosts(): Observable<any> {
-    return this.httpClient.get<any>(this.API_URL).pipe(      //hago un get a la api, devuelve un objeto con la propiedad posts
-      map((response) => ({ posts: response }))
-    );
-  }
-
   getPostDetail(id: number): Observable<PostsInterfaces> {
-    const url = `<span class="math-inline">\{this\.API\_URL\}/</span>{id}`; //construyo la url para que llegue con el id seleccionado desde el boton detalle
-    return this.httpClient.get<PostsInterfaces>(url);//hago un get para obtener un unico posts
+    const url = `${this.API_URL}/${id}`;
+    return this.httpClient.get<PostsInterfaces>(url);
   }
 }

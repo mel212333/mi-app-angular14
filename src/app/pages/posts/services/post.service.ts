@@ -15,7 +15,7 @@ export class PostsserviesComponent {
 
   constructor(private httpClient: HttpClient) {}
 
-  private selectedPostIdSource = new BehaviorSubject<number | null>(null);
+  private selectedPostIdSource = new BehaviorSubject<number | null>(null); //el observable guarda el id 
   selectedPostId = this.selectedPostIdSource.asObservable();
 
   setSelectedPostId(id: number) {
@@ -23,19 +23,21 @@ export class PostsserviesComponent {
   }
 
   getSelectedPostId() {
-    return this.selectedPostIdSource.getValue(); 
+    return this.selectedPostIdSource.getValue();
     //Este método devuelve el valor actual almacenado en el BehaviorSubject selectedPostIdSource utilizando getValue(),
-    //Esto permite obtener el ID del post seleccionado
+    //Esto permite obtener el ID del post seleccionado y lo envia a posts detalle component para usarlo
   }
 
-  getPosts(): Observable<any> { //hace la peticion a la api para obtener una lista de posts
+  getPosts(): Observable<any> {
+    //hace la peticion a la api para obtener una lista de posts
     return this.httpClient
       .get<any>(this.API_URL)
       .pipe(map((response) => ({ posts: response })));
   }
 
-  getPostDetail(id: number): Observable<PostsInterfaces> { //hace la peticion a la api especificando q quiere un posts por id(individualmente)
-    const url = `${this.API_URL}/${id}`;
-    return this.httpClient.get<PostsInterfaces>(url);
-  }
+  // getPostDetail(id: number): Observable<PostsInterfaces> {
+  //   //hace la peticion a la api especificando q quiere un posts por id(individualmente)
+  //   const url = `${this.API_URL}/${id}`;
+  //   return this.httpClient.get<PostsInterfaces>(url);
+  // }
 }

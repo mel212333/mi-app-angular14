@@ -9,7 +9,7 @@ const routes: Routes = [
     children: [
       { path: 'posts', component: PostsComponent },
       { path: 'posts/:id', component: PostsDetailComponent },
-      { path: '**', redirectTo: 'posts' },
+      { path: '**', redirectTo: 'posts' },//ruta sin definir
     ],
   },
 ];
